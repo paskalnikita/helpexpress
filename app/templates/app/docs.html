@@ -1,0 +1,381 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+{% load staticfiles %}
+<section id="form">
+
+{% if not success %}
+    <div class="mt-5 text-center " role="alert">
+        <h2 class="text-primary">
+            <b>Dziękujemy!</b>
+        </h2>
+        <p>
+            Twoje zgłoszenie zostało przyjete. Numer Twojej sprawy: {{id}}
+        </p>
+
+        <div class="row pl-5 pr-5">
+            <div class="col pr-5 pl-5">
+                Proszimy oprzesłanie karty pokładowej, biletów oraz innych dokumentów, potwierdzających podróż na adres e-mail: odszkodowania@helpexpress.pl.
+
+            </div>
+        </div>
+        {{success}}
+
+    </div>
+{% else %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="container text-center mt-4">
+        <p class="h2 text-primary">
+            <b>
+                Informacje dodatkowe
+            </b>
+        </p>
+
+        <p class="h4">
+            Czy na tej samej rezerwacji podróżowały też inne osoby?
+        </p>
+
+
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-outline-primary rounded active">
+                <input type="radio" name="reservation" autocomplete="off" value="Tak" checked> Tak
+            </label>
+
+
+            <label class="ml-5 btn rounded btn-outline-primary">
+                <input type="radio" name="reservation" autocomplete="off" value="Nie"> Nie
+            </label>
+
+        </div>
+
+
+
+        <p class="h4 text-center">
+            Czy współpasażer był pełnoletni w momencie podróży?
+        </p>
+
+
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-outline-primary rounded active">
+                <input type="radio" name="adult" autocomplete="off" value="Tak" checked> Tak
+            </label>
+
+
+            <label class="ml-5 btn rounded btn-outline-primary">
+                <input type="radio" name="adult" autocomplete="off" value="Nie"> Nie
+            </label>
+
+        </div>
+
+
+        <p class="h4 text-center">
+            Podaj informacje o współpasarzerze
+        </p>
+
+
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="name">Imię</label>
+                    <input type="text" class="form-control rounded" name="name" placeholder="Jacob">
+
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="surname">Nazwisko</label>
+                    <input type="text" class="form-control rounded" name="surname" placeholder="Steward">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="name">Data urodzenia</label>
+                    <input type="date" class="form-control rounded" name="name" placeholder="">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row text-left">
+            <div class="card p-3">
+                <h2 class="text-center">
+                    UMOWA PRZELEWU (CESJI) WIERZYTELNOŚCI
+                </h2>
+                <p>
+                    zawarta pomiędzy: <br>
+
+                    …………………………………. [wpisać dane klienta tj, imię i nazwisko, …..zwanym dalej „Pasażerem” lub
+                    „Cedentem”,
+                    [tu albo gdzieś poniżej trzeba podać dane Wierzytelności] <br>
+
+                    a
+                    <br>
+                    …………………………………. zamieszkałym w …………………….. przy ulicy…………………...prowadzącym działalność gospodarczą
+                    pod firmą ……………………………. I pod adresem …………………………….; na podstawie wpisu do Centralnej Ewidencji i
+                    Informacji Gospodarczej RP; NIP………………...REGON……………….., zwanym dalej „Cesjonariuszem” lub
+                    „HelpExpress”.
+                    <br>
+                    <br>
+                    1.Pasażer oświadcza, że na podstawie Rozporządzenia (WE) 261/2004 Parlamentu Europejskiego i
+                    Rady z dnia 11 lutego 2004 r. ustanawiającego wspólne zasady odszkodowania i pomocy dla
+                    pasażerów w przypadku odmowy przyjęcia na pokład albo odwołania lub dużego opóźnienia lotów,
+                    uchylające rozporządzenie (EWG) nr 295/91 z dnia 11 lutego 2004 r. (Dz.Urz.UE.L Nr 46, str. 1)
+                    przysługuje mu względem przewoźnika lotniczego roszczenie o zapłatę z tytułu wskazanego przez
+                    Cedenta w niniejszej umowie cesji (dalej jako „Wierzytelność”).
+                    <br>
+                    <br>
+
+                    2.Pasażer oświadcza, że Wierzytelność jest wolna od wad prawnych uniemożliwiających zawarcie i
+                    wykonanie niniejszej umowy przelewu ani że nie zawarł podobnej umowy, ani umowy windykacji
+                    Wierzytelności z osobą trzecią.
+                    <br><br>
+                    3.Pasażer oświadcza, że jest w posiadaniu dowodów potwierdzających istnienie Wierzytelności
+                    (takich jak bilet, karta pokładowa, korespondencja elektroniczna) oraz, że przekaże je
+                    Cesjonariuszowi pocztą elektroniczną w terminie 7 dni od daty zawarcia niniejszej umowy w
+                    związku z wykonywaniem przedmiotu niniejszej umowy.
+                    <br><br>
+                    4.Pasażer przenosi na Cesjonariusza, składając podpis elektroniczny na stronie internetowej
+                    Helpexpress, Wierzytelność z wszelkimi związanymi z nią prawami,
+                    a Cesjonariusz przelew przyjmuje i Wierzytelność nabywa z chwilą zawarcia niniejszej umowy
+                    cesji.
+                    <br><br>
+                    5.Umowa cesji jest zawarta z chwilą otrzymania przez Pasażera, pocztą elektroniczną na wskazany
+                    przez niego adres, dokument umowy podpisanej przez HelpExpress,
+                    <br><br>
+                    6.Powiadomienie dłużnika (przewoźnika lotniczego) o przelewie wierzytelności nastąpi poprzez
+                    przekazanie mu kopii niniejszej umowy przez Cesjonariusza.
+                    <br><br>
+                    7.W terminie 14 dni po uzyskaniu odszkodowania Cesjonariusz uiści na rzecz Pasażera w formie
+                    przelewu, na wskazany rachunek bankowy Pasażera cenę wskazaną w zaakceptowanym przez Pasażera
+                    regulaminie, który znajduje się na stronie internetowej helpexpress.pl.
+                    <br><br>
+                    8.Pasażer wyraża zgodę na przetwarzanie jego danych osobowych w celu zawarcia i rozliczenia
+                    niniejszej umowy cesji oraz akceptuje treść zamieszczonej na stronie helpexpress.pl polityki
+                    prywatności, a także oświadcza, że zapoznał się z treścią klauzuli informacyjnej dotyczącej
+                    przetwarzania jego danych osobowych zamieszczonej na stronie internetowej helpexpress.pl.
+                    <br><br>
+                    9.Umowa zostaje zawarta w formie elektronicznej, co potwierdza załączony do Umowy certyfikat.
+                    <br><br>
+                    10.W sprawach nieuregulowanych niniejszą umową zastosowanie mają powszechnie obowiązujące na
+                    terytorium Rzeczpospolitej Polski przepisy prawa oraz postanowienia regulaminu zamieszczonego na
+                    stronie helpexpress.pl.
+                    <br><br>
+                    11.Załącznikiem do Umowy cesji jest Regulamin dostępny na stronie helpexpress.pl.
+                    <br>
+
+                    <span class="float-left">Pasażer</span> <span class="float-right">Cesjonariusz</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="row text-left">
+            <small>Klikając przycisk “AKCEPTUJĘ”, zgadzasz się z tym, że chcesz zawrzeć umowę cesji. Umowa cesji
+                będzie zawarta oraz ważna od momentu otrzymania potwierdzenia drogą elektroniczną. Takie
+                poywierdzenie będzie wysłane mailem.</small>
+        </div>
+
+
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-outline-primary rounded active">
+                <input type="radio" name="accept" autocomplete="off" value="Akceptuje" checked> Akceptuje
+            </label>
+
+
+            <label class="ml-5 btn rounded btn-outline-primary">
+                <input type="radio" name="accept" autocomplete="off" value="Nie akceptuje"> Nie akceptuje
+            </label>
+
+        </div>
+
+
+
+
+        <div class="row">
+            <small class="text-left">
+                Złóż poniżej swój podpis, taki sam jak na dowodzie osobistym. Jest to wymagane przez linie lotnicze,
+                aby umożliwić wypłatę odszkodowania. Składając podpis i klikajać “TAK”, deklarujesz o zamiarze
+                zawarcia umowy cesji.
+            </small>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <canvas id="sig-canvas" width="620" height="160">
+                            Get a better browser.
+                        </canvas>
+                    </div>
+                </div>
+                <input type="hidden" name="signature" id='signature' value="">
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col text-center">
+                <p class="text-center">
+                    Czy na tej samej rezerwacji podróżowały też inne osoby?
+                </p>
+
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-outline-primary rounded active">
+                        <input type="radio" name="samePersons" autocomplete="off" value="Tak" checked> Tak
+                    </label>
+
+
+                    <label class="ml-5 btn rounded btn-outline-primary">
+                        <input type="radio" name="samePersons" autocomplete="off" value="Nie"> Nie
+                    </label>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="row text-center mt-5">
+        <div class="col-md-12">
+            <button class="btn btn-outline-primary rounded" id="sig-submitBtn">Wyślij</button>
+        </div>
+    </div>
+
+</form>
+{% endif %}
+
+</section>
+<script>
+    (function () {
+        window.requestAnimFrame = (function (callback) {
+            return window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                window.msRequestAnimaitonFrame ||
+                function (callback) {
+                    window.setTimeout(callback, 1000 / 60);
+                };
+        })();
+
+        var canvas = document.getElementById("sig-canvas");
+        var ctx = canvas.getContext("2d");
+        ctx.strokeStyle = "#222222";
+        ctx.lineWidth = 4;
+
+        var drawing = false;
+        var mousePos = {
+            x: 0,
+            y: 0
+        };
+        var lastPos = mousePos;
+
+        canvas.addEventListener("mousedown", function (e) {
+            drawing = true;
+            lastPos = getMousePos(canvas, e);
+        }, false);
+
+        canvas.addEventListener("mouseup", function (e) {
+            drawing = false;
+        }, false);
+
+        canvas.addEventListener("mousemove", function (e) {
+            mousePos = getMousePos(canvas, e);
+        }, false);
+
+        // Add touch event support for mobile
+        canvas.addEventListener("touchstart", function (e) {
+
+        }, false);
+
+        canvas.addEventListener("touchmove", function (e) {
+            var touch = e.touches[0];
+            var me = new MouseEvent("mousemove", {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(me);
+        }, false);
+
+        canvas.addEventListener("touchstart", function (e) {
+            mousePos = getTouchPos(canvas, e);
+            var touch = e.touches[0];
+            var me = new MouseEvent("mousedown", {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(me);
+        }, false);
+
+        canvas.addEventListener("touchend", function (e) {
+            var me = new MouseEvent("mouseup", {});
+            canvas.dispatchEvent(me);
+        }, false);
+
+        function getMousePos(canvasDom, mouseEvent) {
+            var rect = canvasDom.getBoundingClientRect();
+            return {
+                x: mouseEvent.clientX - rect.left,
+                y: mouseEvent.clientY - rect.top
+            }
+        }
+
+        function getTouchPos(canvasDom, touchEvent) {
+            var rect = canvasDom.getBoundingClientRect();
+            return {
+                x: touchEvent.touches[0].clientX - rect.left,
+                y: touchEvent.touches[0].clientY - rect.top
+            }
+        }
+
+        function renderCanvas() {
+            if (drawing) {
+                ctx.moveTo(lastPos.x, lastPos.y);
+                ctx.lineTo(mousePos.x, mousePos.y);
+                ctx.stroke();
+                lastPos = mousePos;
+            }
+        }
+
+        // Prevent scrolling when touching the canvas
+        document.body.addEventListener("touchstart", function (e) {
+            if (e.target == canvas) {
+                e.preventDefault();
+            }
+        }, false);
+        document.body.addEventListener("touchend", function (e) {
+            if (e.target == canvas) {
+                e.preventDefault();
+            }
+        }, false);
+        document.body.addEventListener("touchmove", function (e) {
+            if (e.target == canvas) {
+                e.preventDefault();
+            }
+        }, false);
+
+        (function drawLoop() {
+            requestAnimFrame(drawLoop);
+            renderCanvas();
+        })();
+
+        function clearCanvas() {
+            canvas.width = canvas.width;
+        }
+
+        // Set up the UI
+        var sigText = document.getElementById("sig-dataUrl");
+        var clearBtn = document.getElementById("sig-clearBtn");
+        var submitBtn = document.getElementById("sig-submitBtn");
+        submitBtn.addEventListener("click", function (e) {
+            var dataUrl = canvas.toDataURL();
+            sigText.innerHTML = dataUrl;
+            document.getElementById("signature").value = dataUrl;
+        }, false);
+
+    })();
+</script>
+
+{% endblock %}

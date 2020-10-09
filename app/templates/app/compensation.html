@@ -1,0 +1,562 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+{% load staticfiles %}
+<section id="form">
+
+
+    {% if not success %}
+    <div class="container text-center mt-4">
+        <p class="h2 text-primary">
+            <b>
+                Dziękujemy!
+            </b>
+        </p>
+
+        <p>
+            Nasi specjaliści zweryfikują dane i skontaktują sie z Tobą.
+        </p>
+       <div class="container">
+        <div class="card">
+            <div class="card-body">
+                Dobra wiadomosć - Tobie przysługuje odszkodowanie! Podana kwota wyliczona dla trasy poniżej 1500 km. <br>
+                <div class="row mx-auto">
+                    <div class="col text-right">
+                        <img src="{% static 'img/gold-coin.png' %}" height="44px" alt="">
+                    </div>
+                    <div class="col text-left">
+                        <h2 class="text-danger">€ {{money}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div>
+
+       <div class="row text-center mt-5">
+        <div class="col">
+            <a href="/docs" class="btn btn-primary rounded">Dalej</a>
+        </div>
+    </div>
+
+    </div>
+
+    {% else %}
+    <div class="container mt-4">
+
+        <h1 class="text-center text-primary">
+            <b>
+                Uzyskaj odszkodowanie
+            </b>
+        </h1>
+        <br>
+        <div class="row">
+            <div class="col text-center">
+                <p class="h4 mt-3">
+                    <b>Informacje o Twoim locie</b>
+                </p>
+            </div>
+
+        </div>
+
+        <!-- ALL FORM -->
+        <form action="" method="POST">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="1">Lotnisko odlotu</label>
+                        <input type="text" class="form-control rounded" name="airportStart" id="1"
+                            placeholder="Zhulyany">
+                    </div>
+                </div>
+                <div class="col">
+
+                    <div class="form-group">
+                        <label for="2">Lotnisko przylotu</label>
+                        <input type="text" class="form-control rounded" id="2" name="airportDestination"
+                            placeholder="Zhulyany">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="3">Linia lotnicza</label>
+                        <input type="text" class="form-control rounded" id="3" name="line"
+                            placeholder="Zhulyany">
+                    </div>
+                </div>
+                <div class="col">
+
+                    <div class="form-group">
+                        <label for="4">Numer rejsu</label>
+                        <input type="text" class="form-control rounded" id="4" name="number"
+                            placeholder="Zhulyany">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="5">Data rejsu</label>
+                        <input type="text" class="form-control rounded" id="5" name="date"
+                            placeholder="Zhulyany">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="container text-center">
+
+                <h4 class="text-primary">
+                    <b>Czy Twój lot był z przesiadką?</b>
+                </h4>
+
+                <div class="row ">
+                    <div class="col text-center">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="change"
+                                value="Nie, lot bezpośredni" checked>
+                            <label class="form-check-label">
+                                Nie, lot bezpośredni
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col text-center">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="change"
+                                value=" Tak, 1 przesiadka" checked>
+                            <label class="form-check-label">
+                                Tak, 1 przesiadka
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col text-center">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="change"
+                                value="Tak, 2 przesiadki" checked>
+                            <label class="form-check-label">
+                                Tak, 2 przesiadki
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+            <div class="row mt-3">
+                <div class="col text-center">
+                    <h4>
+                        Co wydarzyło się z Twoim lotem?
+                    </h4>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col">
+                    <button class="btn btn-outline-primary  rounded" type="button" data-toggle="collapse"
+                        data-target="#collapse1" aria-expanded="false">
+                        OPÓŻNIONY LOT
+                    </button>
+                </div>
+                <div class="col">
+
+                    <button class="btn btn-outline-primary  rounded" type="button" data-toggle="collapse"
+                        data-target="#collapse2" aria-expanded="false">
+                        ODWOŁANY LOT
+                    </button>
+
+                </div>
+                <div class="col">
+
+                    <button class="btn btn-outline-primary rounded" type="button" data-toggle="collapse"
+                        data-target="#collapse3" aria-expanded="false">
+                        ODMOWA PRZYJĘCIA NA POKŁAD (OVERBOOKING)
+                    </button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="collapse text-center" id="collapse1">
+                        <div class="card-body text-center">
+                            <p class="h4 mt-3">
+                                Ile wynosiło opóżnienie Twojego lotu?
+                            </p>
+
+
+                            <div class="col text-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="timeDelay"
+                                        value="Poniżej 3 godzin">
+                                    <label class="form-check-label">
+                                        Poniżej 3 godzin
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div class="col text-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="timeDelay"
+                                        value="3 godziny lub więcej">
+                                    <label class="form-check-label">
+                                        3 godziny lub więcej
+                                    </label>
+                                </div>
+                            </div>
+
+                            <p class="h4 mt-3">
+                                Jaka była przyczyna zakłócenia?
+                            </p>
+
+                            <div class="col text-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="problemType"
+                                        value="Problemy techniczne">
+                                    <label class="form-check-label">
+                                        Problemy techniczne
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col text-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="problemType"
+                                        value="Złe warunki pogodowe">
+                                    <label class="form-check-label">
+                                        Złe warunki pogodowe
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col text-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="problemType"
+                                        value="Problemy na lotnisku">
+                                    <label class="form-check-label">
+                                        Problemy na lotnisku
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col text-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="problemType"
+                                        value="Inna przyczyna">
+                                    <label class="form-check-label">
+                                        Inna przyczyna
+                                    </label>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="collapse" id="collapse2">
+                        <div class="col text-center">
+                            <div class="card-body">
+                                <p class="h4 mt-3"> 
+                                    Kiedy zostałeś poinformowany o odwołaniu lotu?
+                                </p>
+
+                                <div class="col text-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="timeInformation"
+                                            value="14 dni przed wylotem lub wiecej">
+                                        <label class="form-check-label">
+                                            14 dni przed wylotem lub wiecej
+                                        </label>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col text-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="timeInformation"
+                                            value="Mniej, niż 14 dni przed wylotem">
+                                        <label class="form-check-label">
+                                            Mniej, niż 14 dni przed wylotem
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <p class="h4 mt-3">
+                                    Jaka była przyczyna zakłócenia?
+                                </p>
+
+
+                                <div class="col text-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="reason"
+                                            value="Problemy techniczne">
+                                        <label class="form-check-label">
+                                            Problemy techniczne
+                                        </label>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col text-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="reason"
+                                            value="Złe warunki pogodowe">
+                                        <label class="form-check-label">
+                                            Złe warunki pogodowe
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                                <div class="col text-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="reason"
+                                            value="Problemy na lotnisku">
+                                        <label class="form-check-label">
+                                            Problemy na lotnisku
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                                <div class="col text-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="reason"
+                                            value="Inna przyczyna">
+                                        <label class="form-check-label">
+                                            Inna przyczyna
+                                        </label>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="collapse" id="collapse3">
+                        <div class="col text-center">
+                            <div class="card-body">
+
+                                <p class="h4 mt-3">Jaka była przyczyna odmowy?</p>
+
+
+                                <div class="col text-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="denyReason"
+                                            value="Brak miejsc w samolocie">
+                                        <label class="form-check-label">
+                                            Brak miejsc w samolocie
+                                        </label>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col text-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="denyReason"
+                                            value="Nie zostałem dopuszczony do rejestracji">
+                                        <label class="form-check-label">
+                                            Nie zostałem dopuszczony do rejestracji
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                                <div class="col text-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="denyReason"
+                                            value="Inna przyczyna">
+                                        <label class="form-check-label">
+                                            Inna przyczyna
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div class="row mt-3">
+
+
+                <div class="col text-center">
+                    <p class="h4 mt-3">
+                        Dane pasażera
+                    </p>
+
+
+
+
+                    <div class="row">
+                        <div class="col">
+
+                            <div class="form-group">
+                                <label for="name">Imię</label>
+                                <input type="text" class="form-control rounded" id="name" name="name"
+                                    placeholder="Jacob">
+                            </div>
+                        </div>
+                        <div class="col">
+
+                            <div class="form-group">
+                                <label for="surname">Nazwisko</label>
+                                <input type="text" class="form-control rounded" id="surname" name="surname"
+                                    placeholder="Steward">
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col">
+
+                            <div class="form-group">
+                                <label for="birthday">Data urodzenia</label>
+                                <input type="date" class="form-control rounded" id="birthday" name="birthday"
+                                    placeholder="">
+                            </div>
+                        </div>
+                        <div class="col">
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" name='email' class="form-control rounded" id="email"
+                                    placeholder="bill.berry@example.com">
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col">
+
+                            <div class="form-group">
+                                <label for="phone">Numer telefonu</label>
+                                <input type="text" name='phone' class="form-control rounded" id="phone"
+                                    placeholder="(316) 555-0116">
+                            </div>
+                        </div>
+                        <div class="col">
+
+                        </div>
+                    </div>
+
+
+                    <div class="row text-center">
+                        <div class="col text-center">
+                            <p class="h4 mt-3">
+                               <b> Wybierz wygodny dla Ciebie sposób komunikacji</b>
+                            </p>
+
+                            <div class="row text-center">
+                                <div class="col">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="contactType"
+                                            value="Telefon">
+                                        <label class="form-check-label">
+                                            Telefon
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="contactType"
+                                            value="Viber">
+                                        <label class="form-check-label">
+                                            Viber
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="contactType"
+                                            value="Whatsapp">
+                                        <label class="form-check-label">
+                                            Whatsapp
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="contactType"
+                                            value="Telegram">
+                                        <label class="form-check-label">
+                                            Telegram
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="rules">
+                            <label class="form-check-label" name='rules' required for="rules">
+                                Akceptuję regulamin i politykę ochrony danych HelpExpress
+                            </label>
+                          </div>
+                        </div>
+
+                </div>
+            </div>
+
+
+            <div class="row text-center">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary rounded">Wyślij</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    {% endif %}
+
+</section>
+
+
+{% endblock %}

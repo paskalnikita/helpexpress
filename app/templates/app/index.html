@@ -1,0 +1,394 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+{% load staticfiles %}
+<section id="form">
+    <div class="container mt-4">
+         {% if success %}
+         <div class=" text-center alert alert-success" role="alert">
+            {{success}}
+          
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+        </div>
+         {% endif %}
+        <div class="row">
+
+            <div class="col-lg-8">
+                <img src="{% static 'img/main.jpg' %}" alt="" class="main-img">
+
+            </div>
+            <div class="col-lg-4">
+                <div class="card p-3 text-center">
+                    <!-- <form action="" method="POST">
+                {% csrf_token %} -->
+                    <p>
+                        Opóźnienia lotu się zdarzają, ale to nie znaczy, że musisz je zaakceptować.
+                    </p>
+                    <div class="form-group">
+                        <input type="text" class="form-control rounded" name="fromLocation" id="fromLocation"
+                            placeholder="Początek lotu">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control rounded" name="destination" id="destination"
+                            placeholder="Koniec lotu">
+                    </div>
+
+                    <a href="{% url 'compensation' %}">
+                        <button class="mx-auto btn btn-danger text-center rounded">Sprawdź ODSZKODOWANIE</button>
+                    </a>
+                    <!-- </form> -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section id='how'>
+
+    <h3 class="text-center text-primary">
+        <b> Jak to działa?</b>
+    </h3>
+
+    <div class="row text-center">
+        <div class="col">
+
+            <img src="{% static 'img/doc.jpg' %}" height="150px" alt="">
+            <p class="h4 ">Wypełniasz formularz</p>
+        </div>
+        <div class="col">
+
+
+            <img src="{% static 'img/person.jpg' %}" height="150px" alt="">
+            <p class="h4 ">Działamy natychmiast</p>
+        </div>
+        <div class="col">
+
+            <img src="{% static 'img/wallet.jpg' %}" height="150px" alt="">
+            <p class="h4 ">
+                Otrzymujesz pieniądze
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<section id="work" class="mt-5">
+
+
+    <h2 class="text-primary text-center"><b>Usługi HelpExpress</b></h2>
+
+
+
+    <div class="container">
+        <div class="row card mb-3">
+            <div class="row">
+                <div class="col-lg-3 text-center">
+                    <img src="{% static 'img/law.jpg'%}" height="150xp" alt="">
+                </div>
+                <div class="col mt-3">
+                    <h4>
+                        <b> Bez wygranych - bez opłat</b>
+                    </h4>
+                    <p class="h5">Kiedy wygrywamy Twój biznes, otrzymujemy 15% (+ VAT - ??) rekompensaty. Jeśli nie
+                        otrzymamy rekompensaty, nasza usługa jest bezpłatna. Bez wygranej - bez opłat!
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row card mb-3">
+            <div class="row">
+                <div class="col-lg-3 text-center">
+                    <img src="{% static 'img/coin.jpg'%}" height="150xp" alt="">
+                </div>
+                <div class="col mt-3">
+                    <h4>
+                        <b>Możesz zwrócić swoje pieniądze</b>
+                    </h4>
+                    <p class="h5">Jeśli zajdzie taka potrzeba, możemy podjąć kroki prawne w imieniu klienta.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row card mb-3">
+            <div class="row">
+                <div class="col-lg-3 text-center">
+                    <img src="{% static 'img/letter.jpg'%}" height="150xp" alt="">
+                </div>
+                <div class="col mt-3">
+                    <h4>
+                        <b> Przygotowanie listów i koszty prawne</b>
+                    </h4>
+                    <p class="h5">Nasi prawnicy rozpatrzą twoją sprawę i skontaktują się z przedstawicielami firmy
+                        przewozowej, wykonując dla ciebie wszystkie nieprzyjemne zadania, takie jak złożenie skargi w
+                        urzędzie cywilnym i innych.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row card mb-3">
+            <div class="row">
+                <div class="col-lg-3 text-center">
+                    <img src="{% static 'img/persons.jpg'%}" height="150xp" alt="">
+                </div>
+                <div class="col mt-3">
+                    <h4>
+                        <b> Doświadczony zespół prawników</b>
+                    </h4>
+                    <p class="h5">
+                        Pomagamy pasażerom uzyskać odszkodowanie od linii lotniczych.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<section id="law">
+    <div class="container">
+        <div class="container">
+            <h4 class="text-center text-primary">
+                Poznaj Swoje Prawa
+            </h4>
+            <p>
+                87% pasażerów lotniczych nie zna swoich praw. W HELPEXPRESS działamy właśnie po to, by zmienić ten stan
+                rzeczy. Powiemy Ci, czy możesz uzyskać odszkodowanie, i pomożemy Ci je zdobyć – nieważne, w jakiej
+                części świata podróżujesz.
+            </p>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <div class="card">
+                    <p>
+                        <a class="btn rounded ml-2 " data-toggle="collapse" href="#collapse1" role="button"
+                            aria-expanded="false" aria-controls="collapse1">
+                            +
+                        </a>
+                        Prawa pasażerów lotniczych
+                    </p>
+                </div>
+                <div class="collapse mt-2" id="collapse1">
+                    <div class="card card-body">
+                        Prawa pasażerów lotniczych
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <p>
+                        <a class="btn rounded ml-2" data-toggle="collapse" href="#collapse2" role="button"
+                            aria-expanded="false" aria-controls="collapse2">
+                            +
+                        </a>
+                        Odszkodowanie za opóźnienie transferu
+                    </p>
+                </div>
+                <div class="collapse mt-2" id="collapse2">
+                    <div class="card card-body">
+                        Odszkodowanie za opóźnienie transferu
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <div class="card">
+                    <p>
+                        <a class="btn rounded ml-2" data-toggle="collapse" href="#collapse3" role="button"
+                            aria-expanded="false" aria-controls="collapse3">
+                            +
+                        </a>
+                        Odszkodowanie za opóźniony lot​
+                    </p>
+                </div>
+                <div class="collapse mt-2" id="collapse3">
+                    <div class="card card-body">
+                        Odszkodowanie za opóźniony lot​
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <p>
+                        <a class="btn rounded ml-2" data-toggle="collapse" href="#collapse4" role="button"
+                            aria-expanded="false" aria-controls="collapse4">
+                            +
+                        </a>
+                        Odszkodowanie za odmowę wejścia na pokład
+                    </p>
+                </div>
+                <div class="collapse mt-2" id="collapse4">
+                    <div class="card card-body">
+                        Odszkodowanie za odmowę wejścia na pokład
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row mb-3">
+            <div class="col">
+                <div class="card">
+                    <p>
+                        <a class="btn rounded ml-2 " data-toggle="collapse" href="#collapse5" role="button"
+                            aria-expanded="false" aria-controls="collapse5">
+                            +
+                        </a>
+                        Odszkodowanie za odwołany lot​
+                    </p>
+                </div>
+                <div class="collapse mt-2" id="collapse5">
+                    <div class="card card-body">
+                        Odszkodowanie za odwołany lot​
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <p>
+                        <a class="btn rounded  ml-2" data-toggle="collapse" href="#collapse6" aria-expanded="false"
+                            aria-controls="collapse6">
+                            +
+                        </a>
+                        Odszkodowanie za opóźnienie bagażu
+                    </p>
+                </div>
+                <div class="collapse mt-2" id="collapse6">
+                    <div class="card card-body">
+                        Odszkodowanie za opóźnienie bagażu
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="mt-3" id="contact">
+    <h2 class="text-center text-primary"> <b>Kontakt</b></h2>
+
+
+    <div class="row">
+        <div class="col">
+            <p class="text-center text-primary h3"><b>Napisz do nas</b></p>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="nameSurname">Imię i nazwisko</label>
+                    <input type="text" name='nameSurname' class="form-control rounded" id="nameSurname"
+                    placeholder="Twoje Imię">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Adres email</label>
+                    <input type="email" name='email' class="form-control rounded" id="email" 
+                        placeholder="bill.berry@example.com">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="phone">Numer telefonu</label>
+                    <input type="text" name='phone' class="form-control rounded" id="phone"
+                        placeholder="(316) 555-0116">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="message">Tekst wiadomości</label>
+                    <textarea name="message" class="form-control rounded" id="message" rows="7"></textarea>
+                </div>
+
+
+                <div class="text-center">
+
+                    <button type="submit" class="btn text-center btn-primary rounded">Wyślij</button>
+                </div>
+
+
+
+            </form>
+
+
+
+
+        </div>
+        <div class="col">
+
+            <h4 class="text-center text-primary">
+                <b> HelpExpress – odszkodowania lotnicze​ </b>
+            </h4>
+            <div class="row text-center text-primary">
+                <h1>
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-door-open" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M1 15.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zM11.5 2H11V1h.5A1.5 1.5 0 0 1 13 2.5V15h-1V2.5a.5.5 0 0 0-.5-.5z" />
+                        <path fill-rule="evenodd"
+                            d="M10.828.122A.5.5 0 0 1 11 .5V15h-1V1.077l-6 .857V15H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117z" />
+                        <path d="M8 9c0 .552.224 1 .5 1s.5-.448.5-1-.224-1-.5-1-.5.448-.5 1z" />
+                    </svg>
+                </h1>
+                <span class="ml-3 mt-3">
+                    7021 Parker Rd undefined United States Rialto
+                </span>
+            </div>
+
+            <div class="row text-center text-primary">
+                <h1>
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-mailbox" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M4 4a3 3 0 0 0-3 3v6h6V7a3 3 0 0 0-3-3zm0-1h8a4 4 0 0 1 4 4v6a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V7a4 4 0 0 1 4-4zm2.646 1A3.99 3.99 0 0 1 8 7v6h7V7a3 3 0 0 0-3-3H6.646z" />
+                        <path fill-rule="evenodd"
+                            d="M11.793 8.5H9v-1h5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.354-.146l-.853-.854z" />
+                        <path d="M5 7c0 .552-.448 0-1 0s-1 .552-1 0a1 1 0 0 1 2 0z" />
+                    </svg>
+                </h1>
+                <span class="ml-3 mt-3">
+                    debbie.baker@example.com
+                </span>
+            </div>
+
+
+            <div class="row text-center text-primary">
+
+                <h1> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-telephone-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z" />
+                    </svg></h1>
+
+                <span class="ml-3 mt-3">
+                    (843) 555-0130
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+
+</section>
+
+
+{% endblock %}
